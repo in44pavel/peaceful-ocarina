@@ -31,9 +31,11 @@ app.get("/api/hello", function (req, res) {
 //
 app.get("/api/whoami", function (req, res) {
   //req.query=req.params
-  //console.log(req.headers)
+  //let regex=/^(::ffff:)?(\d{1,3}\.){3}\d{1,3}$/
+  //req.a=req.headers['x-forwarded-for'].match(regex)
+  //console.log(req.a)
   res.json({
-    ipaddress: req.headers['x-forwarded-for'],
+    ipaddress: req.headers['x-forwarded-for'].split(',')[0],
     language:req.headers['accept-language'],
     software:req.headers['user-agent'],
   });
